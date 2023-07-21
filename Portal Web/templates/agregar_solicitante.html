@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Agregar Solicitante</h2>
+    <form action="{{ url_for('agregar_solicitante') }}" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" name="telefono" id="telefono" required>
+
+        <button type="submit">Agregar</button>
+    </form>
+    <p><a href="{{ url_for('solicitantes') }}">Volver a la lista de Solicitantes</a></p>
+{% endblock %}

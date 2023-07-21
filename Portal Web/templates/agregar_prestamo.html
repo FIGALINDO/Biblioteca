@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Agregar Préstamo</h2>
+    <form action="{{ url_for('agregar_prestamo') }}" method="post">
+        <label for="solicitante">Solicitante:</label>
+        <select name="solicitante" id="solicitante" required>
+            {% for solicitante in solicitantes %}
+                <option value="{{ solicitante[0] }}">{{ solicitante[1] }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="libro">Libro:</label>
+        <select name="libro" id="libro" required>
+            {% for libro in libros %}
+                <option value="{{ libro[0] }}">{{ libro[1] }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="fecha_prestamo">Fecha de Préstamo:</label>
+        <input type="date" name="fecha_prestamo" id="fecha_prestamo" required>
+
+        <label for="fecha_devolucion">Fecha de Devolución:</label>
+        <input type="date" name="fecha_devolucion" id="fecha_devolucion" required>
+
+        <button type="submit">Agregar</button>
+    </form>
+    <p><a href="{{ url_for('prestamos') }}">Volver a la lista de Préstamos</a></p>
+{% endblock %}

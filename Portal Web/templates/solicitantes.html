@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Solicitantes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for solicitante in solicitantes %}
+                <tr>
+                    <td>{{ solicitante[0] }}</td>
+                    <td>{{ solicitante[1] }}</td>
+                    <td>{{ solicitante[2] }}</td>
+                    <td>{{ solicitante[3] }}</td>
+                    <td>
+                        <a href="{{ url_for('editar_solicitante', solicitante_id=solicitante[0]) }}">Editar</a>
+                        <form action="{{ url_for('eliminar_solicitante', solicitante_id=solicitante[0]) }}" method="post">
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><a href="{{ url_for('agregar_solicitante') }}">Agregar Solicitante</a></p>
+{% endblock %}

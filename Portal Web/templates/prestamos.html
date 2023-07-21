@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Préstamos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Solicitante</th>
+                <th>Libro</th>
+                <th>Fecha de Préstamo</th>
+                <th>Fecha de Devolución</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prestamo in prestamos %}
+                <tr>
+                    <td>{{ prestamo[0] }}</td>
+                    <td>{{ prestamo[1] }}</td>
+                    <td>{{ prestamo[2] }}</td>
+                    <td>{{ prestamo[3] }}</td>
+                    <td>{{ prestamo[4] }}</td>
+                    <td>
+                        <a href="{{ url_for('editar_prestamo', prestamo_id=prestamo[0]) }}">Editar</a>
+                        <form action="{{ url_for('eliminar_prestamo', prestamo_id=prestamo[0]) }}" method="post">
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><a href="{{ url_for('agregar_prestamo') }}">Agregar Préstamo</a></p>
+{% endblock %}

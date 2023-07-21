@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Editar Libro</h2>
+    <form action="{{ url_for('editar_libro', libro_id=libro.id) }}" method="post">
+        <label for="titulo">Título:</label>
+        <input type="text" name="titulo" id="titulo" value="{{ libro.titulo }}" required>
+
+        <label for="autor">Autor:</label>
+        <input type="text" name="autor" id="autor" value="{{ libro.autor }}" required>
+
+        <label for="stock">Stock:</label>
+        <input type="number" name="stock" id="stock" value="{{ libro.stock }}" required>
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+    <p><a href="{{ url_for('libros') }}">Volver a la lista de Libros</a></p>
+{% endblock %}
